@@ -1,0 +1,23 @@
+```
+#Static Vaule
+version: v1 
+#-------------------------------------------------------
+#Stream Applications Definition
+streams:
+  - &streamapp1 domain.streamappname:      # Stream application name
+    name: *streamapp1                      # Mandatory - Relation between stream and name
+  - &streamapp2 domain.streamappname2:
+    name: *streamapp2
+#-------------------------------------------------------
+#Service accounts and acl's definition
+service_accounts:
+  - sa:
+    name: serviceaccountname     #Service account name
+    acls:
+      - app: *streamapp1    # Stream definition for stream application 1
+        read: true         # Allow read permisions for this service account and stream application 1
+        write: true        # Allow write permisions for this service account and stream application 1
+      - app: *streamapp2
+        read: true
+        write: true
+```
